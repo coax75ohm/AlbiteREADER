@@ -185,8 +185,8 @@ public class BookCanvas extends Canvas {
     private volatile boolean    repaintProgressBar      = false;
     private volatile boolean    repaintPageNum          = false;
     
-    private char[]              chapterNumChars          = { '0', '0', '0', '0'};
-    private char[]              pageNumChars             = { '0', '0', '0', '0'};
+    private char[]              chapterNumChars          = { '0', '0', '0'};
+    private char[]              pageNumChars             = { '0', '0', '0'};
     private int                 pagesCount;
 
     private int                 statusBarHeight;
