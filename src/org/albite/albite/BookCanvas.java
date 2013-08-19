@@ -433,8 +433,8 @@ public class BookCanvas extends Canvas {
                     g.fillRect(0, h - statusBarHeight, w, statusBarHeight);
 
                     drawChapterNum(w, h, g);
-                    drawProgressBar(w, h, g);
                     drawPageNum(w, h, g);
+                    drawProgressBar(w, h, g);
                 } else {
                     /* If not the whole status bar is to be updated,
                      check if parts of it are
@@ -444,12 +444,12 @@ public class BookCanvas extends Canvas {
                         drawChapterNum(w, h, g);
                     }
 
-                    if (repaintProgressBar) {
-                        drawProgressBar(w, h, g);
-                    }
-
                     if (repaintPageNum) {
                         drawPageNum(w, h, g);
+                    }
+
+                    if (repaintProgressBar) {
+                        drawProgressBar(w, h, g);
                     }
                 }
             }
@@ -2592,9 +2592,9 @@ public class BookCanvas extends Canvas {
         progressBarWidth = w - (STATUS_BAR_SPACING * 4);
 
         if (chapterNumWidth > pageNumWidth) {
-            progressBarWidth -= chapterNumWidth * 2;
+            progressBarWidth -= chapterNumWidth + chapterNumWidth / 2;
         } else {
-            progressBarWidth -= pageNumWidth * 2;
+            progressBarWidth -= pageNumWidth + pageNumWidth / 2;
         }
         
         progressBarX = (w - progressBarWidth) / 2;
