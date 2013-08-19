@@ -294,7 +294,7 @@ public class BookCanvas extends Canvas {
             frameTime = 1000 / 60;
             fontSizes = new byte[] {12, 14, 16, 18};
             currentFontSizeIndex = (byte) 2;
-            fullscreen = false;
+            fullscreen = true;
             smoothScrolling = true;
         //#endif
 
