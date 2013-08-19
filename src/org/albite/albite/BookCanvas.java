@@ -566,9 +566,12 @@ public class BookCanvas extends Canvas {
         g.setColor(
                 currentScheme.colors[ColorScheme.COLOR_BACKGROUND]);
 
+        /* use previous value of pageNumWidth to clear*/
         g.fillRect(w - pageNumWidth, h - statusBarHeight, w, statusBarHeight);
 
         /* drawing current page area */
+        pageNumWidth = fontStatus.charsWidth(pageNumChars);
+
         fontStatus.drawChars(g, currentScheme.colors[
                 ColorScheme.COLOR_TEXT_STATUS], pageNumChars,
                 w - pageNumWidth - STATUS_BAR_SPACING,
@@ -2373,7 +2376,7 @@ public class BookCanvas extends Canvas {
         i++;
 
         for (; i < pageNumCharsF.length; i++) {
-            pageNumCharsF[i] = ' ';
+            pageNumCharsF[i] = '\0';
         }
 
         pageNumChars = pageNumCharsF;

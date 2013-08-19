@@ -38,6 +38,7 @@ public class AlbiteBitmapFont extends AlbiteFont {
     public final int                spaceWidth;
     public final int                dashWidth;
     public final int                questionWidth;
+    public final int                nullWidth = 0;
 
     public AlbiteBitmapFont(final String fontname)
             throws IOException, AlbiteFontException {
@@ -152,7 +153,9 @@ public class AlbiteBitmapFont extends AlbiteFont {
     }
 
     public final int charWidth(char c) {
-        if (c < glyphs.length) {
+        if (c == '\0') {
+            return nullWidth;
+        } else if (c < glyphs.length) {
             final Glyph g = glyphs[c];
 
             if (g == null) {
