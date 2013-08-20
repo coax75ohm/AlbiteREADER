@@ -1151,54 +1151,58 @@ public class BookCanvas extends Canvas {
 
     private void processKeys(final int k, final boolean repeated) {
 
+        //TODO: enable circle/cross swapping, FIRE/???
+        //for now use Eastern (O for confirm) keymapping (PSPKVM default)
         int kga = getGameAction(k);
 
         if (mode == MODE_PAGE_READING) {
 
-            if (kga == (scrollingOnX ? LEFT : UP)) {
+            if (kga == (scrollingOnX ? LEFT : UP) ||  //PSP left/up
+                k == KEY_NUM5) {  //PSP shift circle
                 scheduleScrolling(SCROLL_PREV);
                 return;
             }
 
-            if (kga == (scrollingOnX ? RIGHT : DOWN)) {
+            if (kga == (scrollingOnX ? RIGHT : DOWN) ||  //PSP right/down
+                kga == FIRE) {  //PSP circle
                 scheduleScrolling(SCROLL_NEXT);
                 return;
             }
 
             if (!repeated) {
-                if (kga == FIRE) {
-                    /*
-                     * Menu
-                     */
-                    app.calledOutside();
-                    app.showMenu();
-                    return;
-                }
-
                 switch (k) {
-                    case KEY_NUM1:
-                        //open library
+                    case KEY_NUM0:  //PSP cross
+                        //main menu
+                        app.calledOutside();
+                        app.showMenu();
+                        return;
+
+                    /*case ???:  //PSP shift cross
+                        //choose book
                         app.calledOutside();
                         app.openLibrary();
-                        return;
+                        return;*/
 
-                    case KEY_NUM3:
-                        //open dictionary and unit converter
+                    /*case KEY_NUM1:  //PSP square
+                        //bookmarks
+                        app.???();
+                        return;*/
+
+                    //case KEY_NUM7:  //PSP shift square
+                    case KEY_NUM1:  //PSP square
+                        //table of contents
                         app.calledOutside();
-                        app.setEntryForLookup("");
-                        //#if (TinyMode || TinyModeExport || LightMode || LightModeExport)
-//#                             app.enterNumber();
-                        //#else
-                            app.enterWord();
-                        //#endif
+                        app.showToc();
                         return;
 
-                    case KEY_NUM7:
-                        cycleFontSizes();
-                        return;
-
-                    case KEY_NUM9:
+                    case KEY_NUM3:  //PSP triangle
+                        //switch day/night
                         cycleColorSchemes();
+                        return;
+
+                    case KEY_NUM9:  //PSP shift triangle
+                        //switch font
+                        cycleFontSizes();
                         return;
                 }
             }
