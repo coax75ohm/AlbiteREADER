@@ -1157,15 +1157,15 @@ public class BookCanvas extends Canvas {
 
         if (mode == MODE_PAGE_READING) {
 
-            if (kga == (scrollingOnX ? LEFT : UP) ||  //PSP left/up
-                k == KEY_NUM5) {  //PSP shift circle
-                scheduleScrolling(SCROLL_PREV);
-                return;
-            }
-
             if (kga == (scrollingOnX ? RIGHT : DOWN) ||  //PSP right/down
                 kga == FIRE) {  //PSP circle
                 scheduleScrolling(SCROLL_NEXT);
+                return;
+            }
+
+            if (kga == (scrollingOnX ? LEFT : UP) ||  //PSP left/up
+                k == KEY_NUM5) {  //PSP shift circle
+                scheduleScrolling(SCROLL_PREV);
                 return;
             }
 
@@ -1178,21 +1178,21 @@ public class BookCanvas extends Canvas {
                         return;
 
                     /*case ???:  //PSP shift cross
-                        //choose book
-                        app.calledOutside();
-                        app.openLibrary();
-                        return;*/
-
-                    /*case KEY_NUM1:  //PSP square
                         //bookmarks
                         app.???();
                         return;*/
 
-                    //case KEY_NUM7:  //PSP shift square
                     case KEY_NUM1:  //PSP square
                         //table of contents
                         app.calledOutside();
+                        //TODO: make current chapter the default selection
                         app.showToc();
+                        return;
+
+                    case KEY_NUM7:  //PSP shift square
+                        //book selection
+                        app.calledOutside();
+                        app.openLibrary();
                         return;
 
                     case KEY_NUM3:  //PSP triangle
