@@ -12,3 +12,5 @@ A fork of [Albite Reader](https://github.com/dumbledore/AlbiteREADER/) targeted 
 <tr><td>Square (□)</td><td>Table of Contents</td><td>Book Selection</td></tr>
 <tr><td>Triangle (△)</td><td>Switch Day/Night</td><td>Cycle Font Size</td></tr>
 </table>
+
+Precompiled jar available on [Dropbox](https://dl.dropboxusercontent.com/u/28091298/psp/AlbiteReaderNoTouch.jar).
